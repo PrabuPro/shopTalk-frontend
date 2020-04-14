@@ -1,0 +1,133 @@
+<div class="login-page">
+    <div class="login-box">
+        <div class="l-box">
+            <h1 class="logo"><span class="bold">Shop</span>Talk</h1>
+        </div>
+      <div class="l-box">
+        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm)">
+          <h2>Log In</h2>
+          <!-- <mat-error *ngIf="loginInvalid">
+        The username and password were not recognised
+      </mat-error> -->
+          <div class="form-fields">
+
+            <mat-form-field>
+              <mat-label class="d-flex align-items-center">
+                Username
+              </mat-label>
+              <input matInput type="text" formControlName="username" id="email" (keyup)="clearErrors()">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label class="d-flex align-items-center">
+                <mat-icon class="mr-1 mat-icon-fix">lock</mat-icon> Password
+              </mat-label>
+              <input matInput type="password" formControlName="password" id="password" required (keyup)="clearErrors()">
+              <mat-error
+                *ngIf="loginForm.controls.password.errors?.minlength && !loginForm.controls.password.errors?.required">
+                Password no is <strong>not less than 8 characters</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="loginForm.controls.password.errors?.maxlength && !loginForm.controls.password.errors?.required">
+                Password no is <strong>no more that 10 characters</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <div class="form-row mr-2 ml-2 mt-2">
+              <div class="col-md-12 text-danger">
+                <div class="" *ngFor="let error of errors" [innerHTML]="error.message">
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="form-fields">
+              <div class="row p-0 m-0">
+                <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12 form-mobile-v-center">
+                  <mat-checkbox [(ngModel)]="rememberMe" [ngModelOptions]="{standalone: true}" id="rememberme">
+                    Remember me</mat-checkbox>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12 d-flex justify-content-end form-mobile-v-center">
+                  <a class="forgot-pw-color" routerLink="forgot-password">Forgot Password?</a>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 text-center">
+              <div class="mb-3 mt-1">
+                <button class="user-onboard-btn" mat-raised-button color="primary" type="submit"
+                  [disabled]="!loginForm.valid">Log in</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+
+<!-- <div class="d-flex justify-content-center">
+  <form autocomplete="off" novalidate [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm)" name="loginForm">
+    <mat-card class="login-form-card" fxLayout="column" fxLayoutAlign="center center">
+      <div class="login-form">
+        <div class="text-center">
+          <img class="rounded mx-auto d-block mb-3 logo-image" src="{{companyLogoPath}}">
+          <span class="login-main-c-text">Sign in to <br></span><span
+            class="text-uppercase login-c-text">{{orgName}}</span>
+        </div>
+
+        <div class="form-fields">
+
+          <mat-form-field >
+            <mat-label class="d-flex align-items-center">
+              <mat-icon class="mr-1 mat-icon-fix">email_outline</mat-icon> Email
+            </mat-label>
+            <input matInput type="text" formControlName="email" id="email" (keyup)="clearErrors()" email>
+          </mat-form-field>
+
+          <mat-form-field class="login-full-width col-md-12 mt-3 login-input-design">
+            <mat-label class="d-flex align-items-center">
+              <mat-icon class="mr-1 mat-icon-fix">lock</mat-icon> Password
+            </mat-label>
+            <input matInput type="password" formControlName="password" id="password" required (keyup)="clearErrors()">
+            <mat-error
+              *ngIf="loginForm.controls.password.errors?.minlength && !loginForm.controls.password.errors?.required">
+              Password no is <strong>not less than 8 characters</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="loginForm.controls.password.errors?.maxlength && !loginForm.controls.password.errors?.required">
+              Password no is <strong>no more that 10 characters</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="form-row mr-2 ml-2 mt-2">
+            <div class="col-md-12 text-danger">
+              <div class="" *ngFor="let error of errors" [innerHTML]="error.message">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-fields">
+            <div class="row p-0 m-0">
+              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12 form-mobile-v-center">
+                <mat-checkbox [(ngModel)]="rememberMe" [ngModelOptions]="{standalone: true}" id="rememberme">
+                  Remember me</mat-checkbox>
+              </div>
+              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12 d-flex justify-content-end form-mobile-v-center">
+                <a class="forgot-pw-color" routerLink="forgot-password">Forgot Password?</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 text-center">
+            <div class="mb-3 mt-1">
+              <button class="user-onboard-btn" mat-raised-button color="primary" type="submit"
+                [disabled]="!loginForm.valid">Log in</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div> -->

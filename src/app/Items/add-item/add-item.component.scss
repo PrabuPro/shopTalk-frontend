@@ -1,0 +1,17 @@
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.float-right{
+    cursor: pointer;
+}
+
+.buttons{
+    margin-right: 10px;
+}

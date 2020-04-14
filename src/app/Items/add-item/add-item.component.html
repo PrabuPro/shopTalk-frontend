@@ -1,0 +1,100 @@
+<div class="modal-header">
+    <p class="p-0 mb-3" mat-dialog-title>Add Item</p>
+    <mat-icon class="float-right profile-logout-header" (click)="onClose()">close</mat-icon>
+</div>
+
+<div mat-dialog-content class="mb-4">
+
+  <form [formGroup]="addItemForm">
+
+    <label class="d-flex align-items-start mt-2 mb-0 flex-column quote-lable col-12 pl-0">Item Name*</label>
+    <div class="form-group custom-color row min-height-30 mt-0 ml-0">
+      <div class="mt-2 col-6 p-0 d-flex align-items-start">
+        <mat-form-field floatLabel="never" style="background-color: #ffffff; width:100%">
+          <input type="text" matInput formControlName="name" [(ngModel)]="itemModal.name" (ngModelChange)="nameChange()" name="name">
+          <mat-error *ngIf="addItemForm.get('name').hasError('required') && addItemForm.get('name').touched">
+            required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <label class="d-flex align-items-start mt-2 mb-0 flex-column quote-lable col-12 pl-0">Discription</label>
+    <div class="form-group custom-color row min-height-30 mt-0 ml-0">
+      <div class="mt-2 col-6 p-0 d-flex align-items-start">
+        <mat-form-field floatLabel="never" style="background-color: #ffffff; width:100%">
+          <textarea type="text" matInput formControlName="description" [(ngModel)]="itemModal.description" name="name"></textarea>
+          <mat-error *ngIf="addItemForm.get('description').hasError('required') && addItemForm.get('description').touched">
+            required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <label class="d-flex align-items-start mt-2 mb-0 flex-column quote-lable col-12 pl-0">Price*</label>
+    <div class="form-group custom-color row min-height-30 mt-0 ml-0">
+      <div class="mt-2 col-6 p-0 d-flex align-items-start">
+        <mat-form-field floatLabel="never" style="background-color: #ffffff; width:100%">
+          <input type="text" matInput formControlName="price" [(ngModel)]="itemModal.price" name="price">
+          <mat-error *ngIf="addItemForm.get('price').hasError('required') && addItemForm.get('price').touched">
+            required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <label class="d-flex align-items-start mt-2 mb-0 flex-column quote-lable col-12 pl-0">Discount*</label>
+    <div class="form-group custom-color row min-height-30 mt-0 ml-0">
+      <div class="mt-2 col-6 p-0 d-flex align-items-start">
+        <mat-form-field floatLabel="never" style="background-color: #ffffff; width:100%">
+          <input type="text" matInput formControlName="discount" [(ngModel)]="itemModal.discount" name="name">
+          <mat-error *ngIf="addItemForm.get('discount').hasError('required') && addItemForm.get('discount').touched">
+            required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <label class="d-flex align-items-start mt-2 mb-0 flex-column quote-lable col-12 pl-0">Category*</label>
+    <div class="form-group custom-color row min-height-30 mt-0 ml-0">
+      <div class="mt-2 col-6 p-0 d-flex align-items-start">
+        <mat-form-field floatLabel="never" style="background-color: #ffffff; width:100%">
+          <mat-select [(ngModel)]="itemModal.categoryId" formControlName='category'>
+            <ng-container *ngFor="let category of categoryList">
+              <mat-option [value]="category.id">{{category.catName}}</mat-option>
+            </ng-container>
+          </mat-select>
+          <mat-error *ngIf="addItemForm.get('category').hasError('required') && addItemForm.get('category').touched">
+            required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <label class="d-flex align-items-start mt-2 mb-0 flex-column quote-lable col-12 pl-0">Mall*</label>
+    <div class="form-group custom-color row min-height-30 mt-0 ml-0">
+      <div class="mt-2 col-6 p-0 d-flex align-items-start">
+        <mat-form-field floatLabel="never" style="background-color: #ffffff; width:100%">
+          <mat-select [(ngModel)]="itemModal.mallId" formControlName='mall'>
+            <ng-container *ngFor="let mall of mallList">
+              <mat-option [value]="mall.id">{{mall.name}}</mat-option>
+            </ng-container>
+          </mat-select>
+          <mat-error *ngIf="addItemForm.get('mall').hasError('required') && addItemForm.get('mall').touched">
+            required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="button-container">
+      <button mat-flat-button *ngIf="state == 'add'" color="primary" class="buttons"
+        [disabled]="!addItemForm.valid" (click)="addItem()">Add Item</button>
+      <button mat-flat-button *ngIf="state == 'edit'" color="primary" class="buttons"
+        [disabled]="!addItemForm.valid" (click)="updateItem()">Update Item</button>
+    <button mat-flat-button color="accent" (click)="onClose()">Cancel</button>
+  </div>
+
+</div>

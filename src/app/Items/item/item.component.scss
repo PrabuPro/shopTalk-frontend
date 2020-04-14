@@ -1,0 +1,15 @@
+.item-page{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.table{
+    width: 100%;
+}
+
+.item-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
