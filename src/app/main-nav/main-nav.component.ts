@@ -26,8 +26,13 @@ export class MainNavComponent implements OnInit{
   ngOnInit(){
     const token = this.userService.getToken();
     if(token == null){
-      this.rounter.navigate(['login'])
+      this.rounter.navigate(['login']);
     }
+  }
+
+  signOut(){
+    this.userService.logout();
+    this.rounter.navigate(['login']);
   }
 
 }

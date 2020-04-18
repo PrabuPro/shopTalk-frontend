@@ -1,0 +1,25 @@
+.qr-page{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    justify-content: center;
+}
+
+.selection-section{
+    display: flex;
+    
+}
+
+.gen-buttons{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    position: relative;
+    top: 20px;
+    margin-left: 40px;
+}
+
+.qrCard{
+    width: 370px;
+    margin: auto;
+}

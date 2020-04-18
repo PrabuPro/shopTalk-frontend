@@ -1,0 +1,33 @@
+<div class="qr-page">
+
+    <mat-card class="qrCard">
+
+    <div class="selection-section">
+
+        <div>
+            <label class="d-flex align-items-start mt-2 mb-0 flex-column quote-lable col-12 pl-0">Select Mall</label>
+            <div class="form-group custom-color row min-height-30 mt-0 ml-0">
+              <div class="mt-2 col-6 p-0 d-flex align-items-start">
+                <mat-form-field floatLabel="never" style="background-color: #ffffff; width:100%">
+                  <mat-select [(ngModel)]="mallId" >
+                    <ng-container *ngFor="let mall of mallList">
+                      <mat-option [value]="mall.id">{{mall.name}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+        </div>
+
+        <button mat-flat-button color="primary" class="buttons gen-buttons" 
+          (click)="selectMall()">Generate Quote</button>
+
+    </div>
+
+
+
+    <qrcode *ngIf="qrVisible" [level]="1" [qrvalue]="mallId.toString()" [size]="500"></qrcode>
+
+    </mat-card>
+
+</div>

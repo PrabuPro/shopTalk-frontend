@@ -16,12 +16,18 @@ import { itemModule } from './Items/item.module';
 import { UtilsModule } from './utils/utils.module';
 import { HttpClientModule } from '@angular/common/http';
 import { userModule } from './user/user.module';
+import { AnQrcodeModule } from 'an-qrcode';
+import { QrCodeGenerateComponent } from './qr-code-generate/qr-code-generate.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
+    QrCodeGenerateComponent,
     
   ],
   imports: [
@@ -39,6 +45,11 @@ import { userModule } from './user/user.module';
     userModule,
     UtilsModule, 
     HttpClientModule,
+    AnQrcodeModule,
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

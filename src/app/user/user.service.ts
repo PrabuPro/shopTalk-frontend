@@ -13,6 +13,7 @@ export class UserServiceProvider {
     private baseUrl: string = "http://127.0.0.1:8000/";
 
     private loginUrl = 'api/auth/login';
+    private logoutUrl = 'api/auth/logout/';
 
 
     constructor(
@@ -22,6 +23,13 @@ export class UserServiceProvider {
     }
 
     private getAPIHeaders() {
+        return new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Token ' + this.getToken()
+        });
+    }
+
+    private getAPILoginHeaders() {
         return new HttpHeaders({
             'Content-Type': 'application/json'
         });
@@ -37,7 +45,7 @@ export class UserServiceProvider {
         return this.http
             .post(this.baseUrl + this.loginUrl, JSON.stringify(user), 
             {
-                headers: this.getAPIHeaders(),
+                headers: this.getAPILoginHeaders(),
                 observe: 'response'
             })
             .toPromise().then(res => {
@@ -62,6 +70,21 @@ export class UserServiceProvider {
 
     public setToken(token: string) {
         return localStorage.setItem(TOKEN_NAME, token);
+    }
+
+    public logout(): Promise<JSON> {
+        return this.http
+            .post(this.baseUrl + this.logoutUrl,[],
+                {
+                    headers: this.getAPIHeaders(),
+                    observe: 'response'
+                })
+            .toPromise().then(res => {
+                this.removeToken();
+                return res.body;
+            }, errResponse => {
+                return errResponse.error;
+            });
     }
 
 }

@@ -1,6 +1,7 @@
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { ItemComponent } from './Items/item/item.component';
 import { LoginComponent } from './user/login/login.component';
+import { QrCodeGenerateComponent } from './qr-code-generate/qr-code-generate.component';
 
 export const appRoutes = [
     {
@@ -10,8 +11,9 @@ export const appRoutes = [
         children: [
             {
                 path: 'items', component: ItemComponent,
-              
-
+            },
+            {
+                path: 'generate-qr', component: QrCodeGenerateComponent,
             },
            
         ]
